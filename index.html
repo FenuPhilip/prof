@@ -5,65 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUTOMAX | AI & Robotic Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Mode */
-            --primary-light: #00a876;  /* Sophisticated Teal */
-            --secondary-light: #d81b60; /* Rich Pink */
-            --accent-light: #0091ea;   /* Bright Blue */
-            --bg-light: #f8f9fa;
-            --card-light: #ffffff;
+            /* Light Mode Colors */
+            --primary-light: #00a86b;  /* Emerald Green */
+            --secondary-light: #ff6b6b; /* Coral */
+            --accent-light: #4cc9f0;   /* Sky Blue */
+            --bg-light: #f8f9fa;      /* Light Gray */
             --text-light: #333333;
-            --border-light: rgba(0, 0, 0, 0.1);
-
-            /* Dark Mode */
-            --primary-dark: #00d68f;   /* Vibrant Teal */
-            --secondary-dark: #ff3d71;  /* Neon Pink */
-            --accent-dark: #00b8ff;    /* Electric Blue */
-            --bg-dark: #121212;
-            --card-dark: #1e1e1e;
+            --card-light: #ffffff;
+            
+            /* Dark Mode Colors */
+            --primary-dark: #00ff88;   /* Neon Green */
+            --secondary-dark: #ff2a6d; /* Hot Pink */
+            --accent-dark: #00e0ff;    /* Electric Blue */
+            --bg-dark: #121212;       /* Deep Dark */
             --text-dark: #e0e0e0;
-            --border-dark: rgba(255, 255, 255, 0.1);
-
-            /* Active Colors (changes with theme) */
-            --primary: var(--primary-light);
-            --secondary: var(--secondary-light);
-            --accent: var(--accent-light);
-            --bg: var(--bg-light);
-            --card: var(--card-light);
-            --text: var(--text-light);
-            --border: var(--border-light);
-        }
-
-        [data-theme="dark"] {
+            --card-dark: #1e1e1e;
+            
+            /* Current Theme Defaults (Dark) */
             --primary: var(--primary-dark);
             --secondary: var(--secondary-dark);
             --accent: var(--accent-dark);
             --bg: var(--bg-dark);
-            --card: var(--card-dark);
             --text: var(--text-dark);
-            --border: var(--border-dark);
+            --card: var(--card-dark);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] {
+            --primary: var(--primary-light);
+            --secondary: var(--secondary-light);
+            --accent: var(--accent-light);
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+            --card: var(--card-light);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            transition: 
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .container {
@@ -82,22 +83,23 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background-color: var(--card);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid var(--border);
+            background: var(--card);
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--primary);
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 500;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--primary);
         }
 
         .theme-toggle {
             background: none;
             border: none;
+            font-size: 1.5rem;
             cursor: pointer;
-            font-size: 1.2rem;
             color: var(--text);
         }
 
@@ -108,16 +110,42 @@
             align-items: center;
             text-align: center;
             padding-top: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .robot-arm {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300a86b"><path d="M20 13.5v-3c0-.83-.67-1.5-1.5-1.5h-3V7h2c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1h-3c-.55 0-1 .45-1 1v1h-2V5c0-.55-.45-1-1-1H7c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h2v2H6c-.83 0-1.5.67-1.5 1.5v3c0 .83.67 1.5 1.5 1.5h3v2H7c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-2v-2h2c.83 0 1.5-.67 1.5-1.5v-3c0-.83-.67-1.5-1.5-1.5h-3V7h8v2h-3c-.83 0-1.5.67-1.5 1.5v3c0 .83.67 1.5 1.5 1.5h3v2h-2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-2v-2h3c.83 0 1.5-.67 1.5-1.5z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .robot-arm:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .robot-arm:nth-child(2) {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 1s;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             margin-bottom: 1.5rem;
             color: var(--primary);
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.3rem);
             max-width: 700px;
             margin: 0 auto 2.5rem;
             color: var(--text);
@@ -132,60 +160,99 @@
         }
 
         .tag {
-            background-color: var(--card);
+            background: var(--card);
             color: var(--primary);
-            padding: 0.6rem 1.2rem;
+            padding: 0.7rem 1.4rem;
             border-radius: 50px;
             font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid var(--primary);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+            color: white;
         }
 
         /* Team Section */
         .team-section {
             padding: 6rem 0;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 4rem;
             color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
         }
 
         .team-cards {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
         }
 
         .member-card {
-            background-color: var(--card);
-            border-radius: 10px;
-            padding: 2rem;
-            width: 300px;
+            background: var(--card);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 350px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border);
-            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 168, 107, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .member-card:hover::before {
+            left: 100%;
         }
 
         .member-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 168, 107, 0.2);
         }
 
         .member-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
 
         .member-card .role {
             color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .member-card p {
@@ -195,33 +262,85 @@
 
         .contact-btn {
             display: inline-block;
-            background-color: var(--primary);
+            background: var(--primary);
             color: white;
-            padding: 0.8rem 1.8rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
         }
 
         .contact-btn:hover {
-            background-color: var(--secondary);
+            background: transparent;
+            color: var(--primary);
+            transform: scale(1.05);
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .social-links a {
             color: var(--text);
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            font-size: 1.4rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--primary);
         }
 
         .social-links a:hover {
+            color: white;
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: var(--card);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 1px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 168, 107, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary);
         }
 
@@ -229,18 +348,31 @@
         footer {
             text-align: center;
             padding: 3rem 2rem;
-            background-color: var(--card);
-            border-top: 1px solid var(--border);
+            background: var(--card);
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
         }
 
         footer p {
             margin-bottom: 1rem;
+            color: var(--text);
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
@@ -253,15 +385,57 @@
             color: var(--primary);
         }
 
-        /* Responsive */
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .container {
+                padding: 1.5rem;
             }
-            
+
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .robot-arm {
+                width: 100px;
+                height: 100px;
+            }
+
             .team-cards {
-                flex-direction: column;
-                align-items: center;
+                gap: 2rem;
+            }
+
+            .member-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tags {
+                gap: 0.8rem;
+            }
+
+            .tag {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .contact-btn {
+                padding: 0.7rem 1.5rem;
             }
         }
     </style>
@@ -275,15 +449,18 @@
         </button>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Floating Robot Arms -->
     <section class="hero">
+        <div class="robot-arm"></div>
+        <div class="robot-arm"></div>
         <div class="container hero-content">
-            <h1>Precision Robotics Engineering</h1>
-            <p>Developing advanced AI and robotic systems with cutting-edge technology and innovative solutions.</p>
+            <h1>ROBOTIC INNOVATION REDEFINED</h1>
+            <p>We engineer cutting-edge AI and robotic systems that push beyond conventional boundaries.</p>
             <div class="tags">
                 <span class="tag">AI Development</span>
                 <span class="tag">Robotic Systems</span>
                 <span class="tag">Machine Learning</span>
+                <span class="tag">IoT Solutions</span>
             </div>
         </div>
     </section>
@@ -291,17 +468,18 @@
     <!-- Team Section -->
     <section class="team-section">
         <div class="container">
-            <h2 class="section-title">Our Team</h2>
+            <h2 class="section-title">THE ARCHITECTS OF TOMORROW</h2>
             <div class="team-cards">
                 <!-- Fenu Philip -->
                 <div class="member-card">
                     <h3>Fenu Philip</h3>
-                    <span class="role">AI Specialist</span>
-                    <p>Designing intelligent systems that learn and adapt to complex environments.</p>
-                    <a href="tel:8590816071" class="contact-btn">Contact</a>
+                    <span class="role">AI Visionary</span>
+                    <p>Designs neural architectures that learn at unprecedented rates. Makes AI think beyond algorithms.</p>
+                    <a href="tel:8590816071" class="contact-btn">CONTACT</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/fenu__philip__/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="tel:8590816071"><i class="fas fa-phone"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
 
@@ -309,11 +487,42 @@
                 <div class="member-card">
                     <h3>Mohammed Gassenfer Jaleel</h3>
                     <span class="role">Robotics Engineer</span>
-                    <p>Building precise mechanical systems with innovative hardware solutions.</p>
-                    <a href="tel:+919207420095" class="contact-btn">Contact</a>
+                    <p>Builds mechanical systems with precision that rivals nature. Hardware alchemist.</p>
+                    <a href="tel:+919207420095" class="contact-btn">CONTACT</a>
                     <div class="social-links">
                         <a href="tel:+919207420095"><i class="fas fa-phone"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">OUR CAPABILITIES</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Robotic Automation</h3>
+                    <p>Advanced robotic systems that automate complex tasks with precision and efficiency.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Development</h3>
+                    <p>Custom AI solutions that learn and adapt to your specific business needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>IoT Integration</h3>
+                    <p>Seamless connectivity between devices and systems for smart automation.</p>
                 </div>
             </div>
         </div>
@@ -322,11 +531,12 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 AUTOMAX. All rights reserved.</p>
+            <p>&copy; 2024 <strong>AUTOMAX</strong>. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
                 <a href="#">Careers</a>
+                <a href="#">Contact Us</a>
             </div>
         </div>
     </footer>
@@ -336,34 +546,37 @@
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-        let isDark = false;
+        let isDark = true;
 
         themeToggle.addEventListener('click', () => {
             isDark = !isDark;
             if (isDark) {
                 body.setAttribute('data-theme', 'dark');
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            } else {
-                body.removeAttribute('data-theme');
                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             }
         });
 
-        // Smooth scroll animation for team cards
+        // Animate elements on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animation = `fadeIn 0.8s ease forwards`;
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.member-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s, transform 0.5s';
-            observer.observe(card);
+        document.querySelectorAll('.member-card, .feature-card').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Floating robot arms animation
+        const robotArms = document.querySelectorAll('.robot-arm');
+        robotArms.forEach((arm, index) => {
+            arm.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s`;
         });
     </script>
 </body>
