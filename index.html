@@ -3,44 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUTOMAX | AI & Robotic Systems</title>
+    <title>AUTOMAX | Tech Solutions & Digital Innovation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Mode Colors */
-            --primary-light: #00a86b;  /* Emerald Green */
-            --secondary-light: #ff6b6b; /* Coral */
-            --accent-light: #4cc9f0;   /* Sky Blue */
-            --bg-light: #f8f9fa;      /* Light Gray */
-            --text-light: #333333;
+            /* Color Palette */
+            --tech-blue: #2563eb;
+            --innovation-purple: #7c3aed;
+            --digital-green: #10b981;
+            --creative-orange: #f59e0b;
+            --marketing-pink: #ec4899;
+            
+            /* Light Mode */
+            --bg-light: #f8fafc;
             --card-light: #ffffff;
+            --text-light: #334155;
+            --border-light: #e2e8f0;
             
-            /* Dark Mode Colors */
-            --primary-dark: #00ff88;   /* Neon Green */
-            --secondary-dark: #ff2a6d; /* Hot Pink */
-            --accent-dark: #00e0ff;    /* Electric Blue */
-            --bg-dark: #121212;       /* Deep Dark */
-            --text-dark: #e0e0e0;
-            --card-dark: #1e1e1e;
+            /* Dark Mode */
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --text-dark: #e2e8f0;
+            --border-dark: #334155;
             
-            /* Current Theme Defaults (Dark) */
-            --primary: var(--primary-dark);
-            --secondary: var(--secondary-dark);
-            --accent: var(--accent-dark);
+            /* Active Theme */
             --bg: var(--bg-dark);
-            --text: var(--text-dark);
             --card: var(--card-dark);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            --text: var(--text-dark);
+            --border: var(--border-dark);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         [data-theme="light"] {
-            --primary: var(--primary-light);
-            --secondary: var(--secondary-light);
-            --accent: var(--accent-light);
             --bg: var(--bg-light);
-            --text: var(--text-light);
             --card: var(--card-light);
+            --text: var(--text-light);
+            --border: var(--border-light);
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -55,7 +54,7 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
@@ -85,14 +84,16 @@
             z-index: 1000;
             background: var(--card);
             box-shadow: var(--shadow);
-            border-bottom: 1px solid var(--primary);
+            border-bottom: 2px solid var(--tech-blue);
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary);
+            background: linear-gradient(90deg, var(--tech-blue), var(--innovation-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .theme-toggle {
@@ -101,6 +102,35 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text);
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--tech-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -114,34 +144,49 @@
             overflow: hidden;
         }
 
-        .robot-arm {
+        .tech-icon {
             position: absolute;
-            width: 150px;
-            height: 150px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300a86b"><path d="M20 13.5v-3c0-.83-.67-1.5-1.5-1.5h-3V7h2c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1h-3c-.55 0-1 .45-1 1v1h-2V5c0-.55-.45-1-1-1H7c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h2v2H6c-.83 0-1.5.67-1.5 1.5v3c0 .83.67 1.5 1.5 1.5h3v2H7c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-2v-2h2c.83 0 1.5-.67 1.5-1.5v-3c0-.83-.67-1.5-1.5-1.5h-3V7h8v2h-3c-.83 0-1.5.67-1.5 1.5v3c0 .83.67 1.5 1.5 1.5h3v2h-2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-2v-2h3c.83 0 1.5-.67 1.5-1.5z"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.8;
+            width: 80px;
+            height: 80px;
+            opacity: 0.7;
             z-index: -1;
             animation: float 6s ease-in-out infinite;
         }
 
-        .robot-arm:nth-child(1) {
+        .icon-1 {
             top: 15%;
             left: 10%;
+            color: var(--tech-blue);
             animation-delay: 0s;
         }
 
-        .robot-arm:nth-child(2) {
+        .icon-2 {
             bottom: 20%;
             right: 10%;
+            color: var(--digital-green);
             animation-delay: 1s;
         }
 
+        .icon-3 {
+            top: 30%;
+            right: 15%;
+            color: var(--innovation-purple);
+            animation-delay: 1.5s;
+        }
+
+        .icon-4 {
+            bottom: 30%;
+            left: 15%;
+            color: var(--creative-orange);
+            animation-delay: 0.5s;
+        }
+
         .hero-content h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            background: linear-gradient(90deg, var(--tech-blue), var(--innovation-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-content p {
@@ -161,19 +206,54 @@
 
         .tag {
             background: var(--card);
-            color: var(--primary);
+            color: var(--text);
             padding: 0.7rem 1.4rem;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 600;
-            border: 2px solid var(--primary);
+            border: 2px solid;
             transition: all 0.3s;
+        }
+
+        .tag:nth-child(1) {
+            border-color: var(--tech-blue);
+            color: var(--tech-blue);
+        }
+
+        .tag:nth-child(2) {
+            border-color: var(--digital-green);
+            color: var(--digital-green);
+        }
+
+        .tag:nth-child(3) {
+            border-color: var(--innovation-purple);
+            color: var(--innovation-purple);
+        }
+
+        .tag:nth-child(4) {
+            border-color: var(--creative-orange);
+            color: var(--creative-orange);
         }
 
         .tag:hover {
             transform: translateY(-5px);
-            background: var(--primary);
             color: white;
+        }
+
+        .tag:nth-child(1):hover {
+            background: var(--tech-blue);
+        }
+
+        .tag:nth-child(2):hover {
+            background: var(--digital-green);
+        }
+
+        .tag:nth-child(3):hover {
+            background: var(--innovation-purple);
+        }
+
+        .tag:nth-child(4):hover {
+            background: var(--creative-orange);
         }
 
         /* Team Section */
@@ -186,7 +266,6 @@
             text-align: center;
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 4rem;
-            color: var(--primary);
             position: relative;
         }
 
@@ -198,7 +277,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--tech-blue), var(--innovation-purple));
         }
 
         .team-cards {
@@ -216,10 +295,18 @@
             max-width: 350px;
             text-align: center;
             box-shadow: var(--shadow);
-            border: 1px solid var(--primary);
+            border-top: 4px solid;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+        }
+
+        .member-card.tech-lead {
+            border-color: var(--tech-blue);
+        }
+
+        .member-card.marketing {
+            border-color: var(--marketing-pink);
         }
 
         .member-card::before {
@@ -229,8 +316,12 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 168, 107, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
             transition: left 0.7s;
+        }
+
+        .member-card.marketing::before {
+            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.1), transparent);
         }
 
         .member-card:hover::before {
@@ -239,20 +330,34 @@
 
         .member-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 168, 107, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .member-card h3 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: var(--primary);
+        }
+
+        .member-card.tech-lead h3 {
+            color: var(--tech-blue);
+        }
+
+        .member-card.marketing h3 {
+            color: var(--marketing-pink);
         }
 
         .member-card .role {
-            color: var(--accent);
             font-weight: 600;
             margin-bottom: 1.5rem;
             display: block;
+        }
+
+        .member-card.tech-lead .role {
+            color: var(--digital-green);
+        }
+
+        .member-card.marketing .role {
+            color: var(--creative-orange);
         }
 
         .member-card p {
@@ -260,22 +365,61 @@
             color: var(--text);
         }
 
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--tech-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .member-card.marketing .skill {
+            background: rgba(236, 72, 153, 0.1);
+            color: var(--marketing-pink);
+        }
+
         .contact-btn {
             display: inline-block;
-            background: var(--primary);
-            color: white;
             padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid var(--primary);
+            border: 2px solid;
+        }
+
+        .member-card.tech-lead .contact-btn {
+            background: var(--tech-blue);
+            color: white;
+            border-color: var(--tech-blue);
+        }
+
+        .member-card.marketing .contact-btn {
+            background: var(--marketing-pink);
+            color: white;
+            border-color: var(--marketing-pink);
         }
 
         .contact-btn:hover {
             background: transparent;
-            color: var(--primary);
             transform: scale(1.05);
+        }
+
+        .member-card.tech-lead .contact-btn:hover {
+            color: var(--tech-blue);
+        }
+
+        .member-card.marketing .contact-btn:hover {
+            color: var(--marketing-pink);
         }
 
         .social-links {
@@ -295,53 +439,139 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            border: 1px solid var(--primary);
+            border: 1px solid var(--border);
         }
 
         .social-links a:hover {
             color: white;
-            background: var(--primary);
             transform: scale(1.2);
         }
 
-        /* Features Section */
-        .features {
+        .member-card.tech-lead .social-links a:hover {
+            background: var(--tech-blue);
+            border-color: var(--tech-blue);
+        }
+
+        .member-card.marketing .social-links a:hover {
+            background: var(--marketing-pink);
+            border-color: var(--marketing-pink);
+        }
+
+        /* Services Section */
+        .services {
             padding: 6rem 0;
             background: var(--card);
         }
 
-        .features-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .feature-card {
+        .service-card {
             background: var(--bg);
             border-radius: 15px;
             padding: 2rem;
             transition: all 0.3s;
-            border: 1px solid var(--primary);
+            border-top: 4px solid;
+            box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 168, 107, 0.1);
+        .service-card:nth-child(1) {
+            border-color: var(--tech-blue);
         }
 
-        .feature-icon {
+        .service-card:nth-child(2) {
+            border-color: var(--digital-green);
+        }
+
+        .service-card:nth-child(3) {
+            border-color: var(--innovation-purple);
+        }
+
+        .service-card:nth-child(4) {
+            border-color: var(--creative-orange);
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
             font-size: 2.5rem;
-            color: var(--primary);
             margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
+        .service-card:nth-child(1) .service-icon {
+            color: var(--tech-blue);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            color: var(--digital-green);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            color: var(--innovation-purple);
+        }
+
+        .service-card:nth-child(4) .service-icon {
+            color: var(--creative-orange);
+        }
+
+        .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--tech-blue), var(--innovation-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 500;
         }
 
         /* Footer */
@@ -359,7 +589,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--tech-blue), var(--innovation-purple));
         }
 
         footer p {
@@ -382,7 +612,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--tech-blue);
         }
 
         /* Animations */
@@ -406,20 +636,24 @@
                 padding: 1rem 1.5rem;
             }
 
+            .nav-links {
+                gap: 1rem;
+            }
+
             .hero {
                 padding-top: 6rem;
             }
 
-            .robot-arm {
-                width: 100px;
-                height: 100px;
+            .tech-icon {
+                width: 60px;
+                height: 60px;
             }
 
-            .team-cards {
+            .team-cards, .services-grid {
                 gap: 2rem;
             }
 
-            .member-card {
+            .member-card, .service-card {
                 padding: 2rem;
             }
         }
@@ -437,6 +671,10 @@
             .contact-btn {
                 padding: 0.7rem 1.5rem;
             }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
@@ -444,99 +682,152 @@
     <!-- Header -->
     <header>
         <div class="logo">AUTOMAX</div>
+        <nav class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </nav>
         <button class="theme-toggle" id="themeToggle">
             <i class="fas fa-moon"></i>
         </button>
     </header>
 
-    <!-- Hero Section with Floating Robot Arms -->
+    <!-- Hero Section with Floating Tech Icons -->
     <section class="hero">
-        <div class="robot-arm"></div>
-        <div class="robot-arm"></div>
+        <i class="fas fa-laptop-code tech-icon icon-1"></i>
+        <i class="fas fa-mobile-alt tech-icon icon-2"></i>
+        <i class="fas fa-robot tech-icon icon-3"></i>
+        <i class="fas fa-chart-line tech-icon icon-4"></i>
         <div class="container hero-content">
-            <h1>ROBOTIC INNOVATION REDEFINED</h1>
-            <p>We engineer cutting-edge AI and robotic systems that push beyond conventional boundaries.</p>
+            <h1>DIGITAL INNOVATION & TECH SOLUTIONS</h1>
+            <p>We build cutting-edge digital products and transformative technology solutions for the modern world.</p>
             <div class="tags">
-                <span class="tag">AI Development</span>
-                <span class="tag">Robotic Systems</span>
-                <span class="tag">Machine Learning</span>
-                <span class="tag">IoT Solutions</span>
+                <span class="tag">Web Development</span>
+                <span class="tag">App Development</span>
+                <span class="tag">AI Solutions</span>
+                <span class="tag">Digital Marketing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">OUR CORE SERVICES</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies for optimal performance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile"></i>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Cross-platform mobile applications for iOS and Android with seamless user experiences.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Building</h3>
+                    <p>End-to-end project development from concept to deployment with agile methodologies.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Integration</h3>
+                    <p>Smart automation and AI solutions to enhance your business processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Technologies Used</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="team-section">
+    <section class="team-section" id="team">
         <div class="container">
-            <h2 class="section-title">THE ARCHITECTS OF TOMORROW</h2>
+            <h2 class="section-title">OUR EXPERT TEAM</h2>
             <div class="team-cards">
-                <!-- Fenu Philip -->
-                <div class="member-card">
+                <!-- Fenu Philip - Tech Lead -->
+                <div class="member-card tech-lead">
                     <h3>Fenu Philip</h3>
-                    <span class="role">AI Visionary</span>
-                    <p>Designs neural architectures that learn at unprecedented rates. Makes AI think beyond algorithms.</p>
+                    <span class="role">Technical Lead</span>
+                    <div class="skills">
+                        <span class="skill">Web Development</span>
+                        <span class="skill">App Development</span>
+                        <span class="skill">Project Management</span>
+                        <span class="skill">System Architecture</span>
+                    </div>
+                    <p>Leads our technical team with expertise in full-stack development and project execution.</p>
                     <a href="tel:8590816071" class="contact-btn">CONTACT</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/fenu__philip__/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="tel:8590816071"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
 
-                <!-- Mohammed Gassenfer Jaleel -->
-                <div class="member-card">
+                <!-- Mohammed Gassenfer Jaleel - Marketing -->
+                <div class="member-card marketing">
                     <h3>Mohammed Gassenfer Jaleel</h3>
-                    <span class="role">Robotics Engineer</span>
-                    <p>Builds mechanical systems with precision that rivals nature. Hardware alchemist.</p>
+                    <span class="role">Marketing Director</span>
+                    <div class="skills">
+                        <span class="skill">Digital Marketing</span>
+                        <span class="skill">Brand Strategy</span>
+                        <span class="skill">Client Relations</span>
+                        <span class="skill">Market Research</span>
+                    </div>
+                    <p>Drives our marketing initiatives and client acquisition strategies with innovative approaches.</p>
                     <a href="tel:+919207420095" class="contact-btn">CONTACT</a>
                     <div class="social-links">
                         <a href="tel:+919207420095"><i class="fas fa-phone"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">OUR CAPABILITIES</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Robotic Automation</h3>
-                    <p>Advanced robotic systems that automate complex tasks with precision and efficiency.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI Development</h3>
-                    <p>Custom AI solutions that learn and adapt to your specific business needs.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>IoT Integration</h3>
-                    <p>Seamless connectivity between devices and systems for smart automation.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <p>&copy; 2024 <strong>AUTOMAX</strong>. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Careers</a>
-                <a href="#">Contact Us</a>
+                <a href="tel:8590816071"><i class="fas fa-phone"></i> Tech Team</a>
+                <a href="tel:+919207420095"><i class="fas fa-phone"></i> Marketing</a>
+                <a href="mailto:info@automax.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Location</a>
             </div>
         </div>
     </footer>
@@ -568,15 +859,25 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.member-card, .feature-card').forEach(el => {
+        document.querySelectorAll('.member-card, .service-card, .stat-item').forEach(el => {
             el.style.opacity = '0';
             observer.observe(el);
         });
 
-        // Floating robot arms animation
-        const robotArms = document.querySelectorAll('.robot-arm');
-        robotArms.forEach((arm, index) => {
-            arm.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s`;
+        // Floating tech icons animation
+        const techIcons = document.querySelectorAll('.tech-icon');
+        techIcons.forEach((icon, index) => {
+            icon.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s`;
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
